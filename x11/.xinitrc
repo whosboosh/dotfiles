@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-exec i3
+exec i3 &
+exec xinput --set-prop "MSHW0092:00 045E:0933 Touchpad" "libinput Natural Scrolling Enabled" 1
 xrdb -merge ~/.Xresources
 
 userresources=$HOME/.Xresources

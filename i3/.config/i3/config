@@ -25,14 +25,14 @@ gaps inner 5
 #for_window [class="^.*"] border pixel 2 
 
 #Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
-exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox'
+#exec_always --no-startup-id ~/.config/polybar/launch.sh &
+#exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox'
 
 #Sharenix screencap
 bindsym Ctrl+Print exec sharenix-section
 
 # i3 layout manager
-bindsym $mod+P exec ~/Downloads/i3-layout-manager/layout_manager.sh
+bindsym $mod+P exec ~/bin/i3-layout-manager/layout_manager.sh
 
 set $mod Mod4
 
