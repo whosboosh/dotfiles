@@ -1,3 +1,6 @@
 [submodule "i3-layout-manager/bin/i3-layout-manager"]
 	path = i3-layout-manager/bin/i3-layout-manager
 	url = https://github.com/klaxalk/i3-layout-manager
+[submodule "zsh/.oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh
