@@ -6,8 +6,8 @@ set $mainscreen LVDS1
 #bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
 # Backlight
-bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # File explorer
 bindsym $mod+Shift+Return exec thunar
@@ -24,17 +24,20 @@ gaps inner 5
 #gaps outer 5
 #for_window [class="^.*"] border pixel 2 
 
-#Polybar
-#exec_always --no-startup-id ~/.config/polybar/launch.sh &
-#exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox'
+# wifi menu
+bindsym $mod+i exec alacritty -e ~/.config/i3//wifi.sh
 
 #Sharenix screencap
-bindsym Ctrl+Print exec sharenix-section
+bindsym Ctrl+Print exec --no-startup-id sharenix-section
 
 # i3 layout manager
-bindsym $mod+P exec ~/bin/i3-layout-manager/layout_manager.sh
+#bindsym $mod+P exec ~/bin/i3-layout-manager/layout_manager.sh
+
+# Chrome bindings
+bindsym $sup+c exec --no-startup-id 'workspace 2:Web; exec google-chrome-stable'
 
 set $mod Mod4
+set $sup Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -244,13 +247,13 @@ assign [class="^Google-chrome$"] → $wsrobot
 assign [class="^libreoffice-writer$"] → $wsoffice
 
 # autostart
-exec --no-startup-id i3-msg 'workspace $wsterm; exec /usr/bin/i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace $wsmail; exec /usr/bin/thunderbird'
-exec --no-startup-id i3-msg 'workspace $wsweb; exec /usr/bin/firefox'
-exec --no-startup-id i3-msg 'workspace $wsdev; exec /usr/bin/subl'
-exec --no-startup-id i3-msg 'workspace $wschat; exec /usr/bin/skype'
-exec --no-startup-id i3-msg 'workspace $wsfile; exec /usr/bin/nemo'
-exec --no-startup-id i3-msg 'workspace $wsfile; exec /usr/bin/sparkleshare'
+#exec --no-startup-id i3-msg 'workspace $wsterm; exec /usr/bin/i3-sensible-terminal'
+#exec --no-startup-id i3-msg 'workspace $wsmail; exec /usr/bin/thunderbird'
+#exec --no-startup-id i3-msg 'workspace $wsweb; exec /usr/bin/firefox'
+#exec --no-startup-id i3-msg 'workspace $wsdev; exec /usr/bin/subl'
+#exec --no-startup-id i3-msg 'workspace $wschat; exec /usr/bin/skype'
+#exec --no-startup-id i3-msg 'workspace $wsfile; exec /usr/bin/nemo'
+#exec --no-startup-id i3-msg 'workspace $wsfile; exec /usr/bin/sparkleshare'
 
 bindsym $mod+Ctrl+Right resize shrink width 1px or 1 ppt
 bindsym $mod+Ctrl+Up resize grow height 1px or 1 ppt
