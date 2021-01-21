@@ -1,5 +1,10 @@
 set $mainscreen LVDS1
 
+set $mod Mod4
+set $sup Mod1
+
+bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 870 25
+
 # Pulse Audio controls
 #bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
 #bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
@@ -13,7 +18,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 bindsym $mod+Shift+Return exec thunar
 
 exec --no-startup-id $HOME/.config/i3/startup.sh
-#exec xrandr --dpi 160
+exec xrandr --dpi 170
 
 # Remove title bar
 #for_window [class=".*"] border pixel 0
@@ -31,13 +36,13 @@ bindsym $mod+i exec alacritty -e ~/.config/i3//wifi.sh
 bindsym Ctrl+Print exec --no-startup-id sharenix-section
 
 # i3 layout manager
-#bindsym $mod+P exec ~/bin/i3-layout-manager/layout_manager.sh
+#bindsym $mod+p exec --no-startup-id ~/bin/i3-layout-manager/layout_manager.sh
 
 # Chrome bindings
 bindsym $sup+c exec --no-startup-id 'workspace 2:Web; exec google-chrome-stable'
 
-set $mod Mod4
-set $sup Mod1
+# cpupower
+#bindsym $mod+o exec cpupower-gui
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode

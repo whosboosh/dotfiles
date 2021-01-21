@@ -1,4 +1,25 @@
-Xft.dpi: 140
+Xft.dpi: 170
+
+! Adjusting the font
+xterm*faceName: Monospace
+xterm*faceSize: 11
+ 
+! Changing foreground/background color
+xterm*background: #2B1520
+xterm*foreground: #FFFFFF
+ 
+! Adding a scroll-bar on the right side
+xterm*scrollBar: true
+xterm*rightScrollBar:true
+ 
+! prevent jumping back to the last line with new output
+xterm*scrollTtyOutput: false
+ 
+! add keyboard shortcuts to jump to beginning/end
+xterm*vt100.translations: #override \n\
+ Shift <Key>Home: scroll-forw(10000000000) \n\
+ Shift <Key>End: scroll-back(10000000000)
+
 
 #define base00 #2e3440
 #define base01 #3b4252
