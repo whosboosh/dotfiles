@@ -17,6 +17,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 # File explorer
 bindsym $mod+Shift+Return exec thunar
 
+# Greeter
+bindsym $sup+Shift+l exec dm-tool switch-to-greeter
+
 exec --no-startup-id $HOME/.config/i3/startup.sh
 exec xrandr --dpi 170
 
@@ -29,20 +32,24 @@ gaps inner 5
 #gaps outer 5
 #for_window [class="^.*"] border pixel 2 
 
+# Application bindings
+bindsym $sup+q exec brave
+bindsym $sup+w exec Popcorn-Time
+
 # wifi menu
-bindsym $mod+i exec alacritty -e ~/.config/i3//wifi.sh
+bindsym $mod+i exec alacritty -e ~/.config/i3/wifi.sh
 
 #Sharenix screencap
 bindsym Ctrl+Print exec --no-startup-id sharenix-section
 
 # i3 layout manager
-#bindsym $mod+p exec --no-startup-id ~/bin/i3-layout-manager/layout_manager.sh
+bindsym $mod+p exec --no-startup-id ~/bin/i3-layout-manager/layout_manager.sh
 
 # Chrome bindings
 bindsym $sup+c exec --no-startup-id 'workspace 2:Web; exec google-chrome-stable'
 
 # cpupower
-#bindsym $mod+o exec cpupower-gui
+bindsym $mod+o exec cpupower-gui
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
