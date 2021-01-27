@@ -1,7 +1,8 @@
-set $mainscreen LVDS1
+set $mainscreen eDP1
 
 set $mod Mod4
 set $sup Mod1
+set $term kitty
 
 bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 870 25
 
@@ -37,10 +38,10 @@ bindsym $sup+q exec brave
 bindsym $sup+w exec Popcorn-Time
 
 # wifi menu
-bindsym $mod+i exec alacritty -e ~/.config/i3/wifi.sh
+bindsym $mod+i exec $term ~/.config/i3/wifi.sh
 
 #Sharenix screencap
-bindsym Ctrl+Print exec --no-startup-id sharenix-section
+bindsym Ctrl+Print exec --no-startup-id flameshot gui
 
 # i3 layout manager
 bindsym $mod+p exec --no-startup-id ~/bin/i3-layout-manager/layout_manager.sh
@@ -70,7 +71,7 @@ new_float pixel 5
 workspace_layout default
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $term 
 
 # kill focused window
 bindsym $mod+Shift+q kill
