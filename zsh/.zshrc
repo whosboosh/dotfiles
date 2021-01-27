@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Aliases
+alias ls="colorls --sd"
+alias sshcon="ssh root@167.86.115.86"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -88,6 +92,7 @@ plugins=(
 git
 zsh-syntax-highlighting
 zsh-autosuggestions
+bgnotify
 )
 
 source $ZSH/oh-my-zsh.sh
