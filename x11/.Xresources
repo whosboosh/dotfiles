@@ -1,4 +1,4 @@
-Xft.dpi: 170
+Xft.dpi: 120
 
 ! Adjusting the font
 xterm*faceName: Monospace

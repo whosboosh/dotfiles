@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # ~/.zprofile
 #

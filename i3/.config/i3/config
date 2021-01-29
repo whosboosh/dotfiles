@@ -4,6 +4,9 @@ set $mod Mod4
 set $sup Mod1
 set $term kitty
 
+exec --no-startup-id i3-msg 'workspace $wsterm; exec kitty'
+exec --no-startup-id i3-msg workspace $wsterm 
+
 bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 870 25
 
 # Pulse Audio controls
@@ -19,10 +22,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 bindsym $mod+Shift+Return exec thunar
 
 # Greeter
-bindsym $sup+Shift+l exec dm-tool switch-to-greeter
+bindsym $sup+Shift+l exec light-locker-command -l
 
+exec --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id $HOME/.config/i3/startup.sh
-exec xrandr --dpi 170
+#exec xrandr --dpi 140
 
 # Remove title bar
 #for_window [class=".*"] border pixel 0
@@ -114,19 +118,18 @@ bindsym Mod1+Shift+Tab focus left
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+m move workspace to output left
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+# in horizontal orientation
+bindsym $mod+h split v
+# in vertical orientation
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
-# change container layout (stacked, tabbed, toggle split)
+# change container layout (stacked, tabbed, toggle )
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle 
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -198,7 +201,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # audio
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggleq
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
 # screen brightness
 #bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10

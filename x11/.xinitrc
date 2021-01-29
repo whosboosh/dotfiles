@@ -1,7 +1,6 @@
-#!/bin/zsh
+#!/bin/sh
 
-exec i3 &
-exec xinput --set-prop "MSHW0092:00 045E:0933 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec i3
 xrdb -merge ~/.Xresources
 
 userresources=$HOME/.Xresources
@@ -12,8 +11,11 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 xset +fp /home/nate/.local/share/fonts
 xset fp rehash
 
-# merge in defaults and keymaps
+# Make sure this is before the 'exec' command or it won't be sourced.
+[ -f /etc/xprofile ] && . /etc/xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
 
+# merge in defaults and keymaps
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 
