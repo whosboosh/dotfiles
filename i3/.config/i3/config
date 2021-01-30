@@ -24,8 +24,8 @@ bindsym $mod+Shift+Return exec thunar
 # Greeter
 bindsym $sup+Shift+l exec light-locker-command -l
 
-exec --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id $HOME/.config/i3/startup.sh
+exec --no-startup-id $HOME/.config/polybar/launch.sh --forest &
+exec --no-startup-id $HOME/.config/i3/startup.sh &
 #exec xrandr --dpi 140
 
 # Remove title bar
@@ -86,7 +86,8 @@ bindsym $mod+Shift+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+j focus left
