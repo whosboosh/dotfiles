@@ -45,7 +45,14 @@ bindsym $sup+w exec Popcorn-Time
 bindsym $mod+i exec $term ~/.config/i3/wifi.sh
 
 #Sharenix screencap
+#set $time date + %s%N 
+
 bindsym Ctrl+Print exec --no-startup-id flameshot gui
+#bindsym --release Shift+Print exec --no-startup-id DISPLAY=:0 ffcast -vv rec -m 4 ~/videos/$(date +'%s%N')-screencast.mkv
+bindsym --release Shift+Print exec --no-startup-id ffmpeg -f x11grab -video_size 2256x1504 -framerate 30 -i $DISPLAY -c:v libx264 -preset ultrafast -c:a aac ~/videos/$(date +'%s%N')-screen.mp4
+# Kill screencast
+bindsym $mod+Shift+Print exec --no-startup-id pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
+
 
 # i3 layout manager
 bindsym $mod+p exec --no-startup-id ~/bin/i3-layout-manager/layout_manager.sh
@@ -118,6 +125,8 @@ bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+m move workspace to output left
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
 
 # in horizontal orientation
 bindsym $mod+h split v
