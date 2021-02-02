@@ -19,13 +19,17 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # File explorer
-bindsym $mod+Shift+Return exec thunar
+bindsym $sup+Shift+Return exec thunar
 
 # Greeter
 bindsym $sup+Shift+l exec light-locker-command -l
 
+# Terminal at current dir
+#bindsym $mod+Shift+Return exec ~/.config/i3/scripts/shell.sh
+bindsym $mod+Shift+Return exec cd "$(xcwd)" && exec $term
+
 exec --no-startup-id $HOME/.config/polybar/launch.sh --forest &
-exec --no-startup-id $HOME/.config/i3/startup.sh &
+exec --no-startup-id $HOME/.config/i3/scripts/startup.sh &
 #exec xrandr --dpi 140
 
 # Remove title bar
@@ -42,7 +46,7 @@ bindsym $sup+q exec brave
 bindsym $sup+w exec Popcorn-Time
 
 # wifi menu
-bindsym $mod+i exec $term ~/.config/i3/wifi.sh
+bindsym $mod+i exec $term ~/.config/i3/scripts/wifi.sh
 
 #Sharenix screencap
 #set $time date + %s%N 
