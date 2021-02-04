@@ -10,9 +10,9 @@ exec --no-startup-id i3-msg workspace $wsterm
 bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 870 25
 
 # Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/audio.sh +5% # increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/audio.sh -5% # decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/audio.sh M # mute sound
 
 # Backlight
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
@@ -37,12 +37,12 @@ exec --no-startup-id $HOME/.config/i3/scripts/startup.sh &
 for_window [class="^.*"] border pixel 1
 
 # define gaps around windows
-gaps inner 5
-#gaps outer 5
+gaps inner 3
+#gaps outer 3
 #for_window [class="^.*"] border pixel 2 
 
 # Application bindings
-bindsym $sup+q exec brave
+bindsym $sup+q exec --no-startup-id pavucontrol
 bindsym $sup+w exec Popcorn-Time
 
 # wifi menu
@@ -57,12 +57,8 @@ bindsym --release Shift+Print exec --no-startup-id ffmpeg -f x11grab -video_size
 # Kill screencast
 bindsym $mod+Shift+Print exec --no-startup-id pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
 
-
 # i3 layout manager
 bindsym $mod+p exec --no-startup-id ~/bin/i3-layout-manager/layout_manager.sh
-
-# Chrome bindings
-bindsym $sup+c exec --no-startup-id 'workspace 2:Web; exec google-chrome-stable'
 
 # cpupower
 bindsym $mod+o exec cpupower-gui
@@ -140,6 +136,13 @@ bindsym $mod+v split h
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
+# start main stack
+bindsym $mod+F1   layout splitv;\
+                       move left;\
+                       resize grow right 20 px or 20 ppt;\
+                       split v;\
+                       layout stacking
+
 # change container layout (stacked, tabbed, toggle )
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -213,9 +216,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # audio
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+#bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
 # screen brightness
 #bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
