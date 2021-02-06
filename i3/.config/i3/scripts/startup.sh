@@ -9,3 +9,4 @@ light-locker
 ~/.config/polybar/forest/launch.sh &
 rclone --vfs-cache-mode writes mount onedrive: ~/onedrive
 systemctl restart --user spotifyd
+trayer --edge top --align right --SetDockType false --SetPartialStrut false --expand true --width 6 --transparent true --alpha 1 --tint 0x141A21 --height 35

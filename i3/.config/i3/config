@@ -33,8 +33,8 @@ exec --no-startup-id $HOME/.config/i3/scripts/startup.sh &
 #exec xrandr --dpi 140
 
 # Remove title bar
-#for_window [class=".*"] border pixel 0
-for_window [class="^.*"] border pixel 1
+for_window [class=".*"] border pixel 0
+#for_window [class="^.*"] border pixel 1
 
 # define gaps around windows
 gaps inner 3
