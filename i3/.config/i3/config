@@ -295,3 +295,7 @@ bindsym $mod+Ctrl+Right resize shrink width 1px or 1 ppt
 bindsym $mod+Ctrl+Up resize grow height 1px or 1 ppt
 bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Ctrl+Left resize grow width 1px or 1 ppt
+
+
+# vim syntax highlighting
+# vim:filetype=i3
