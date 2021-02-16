@@ -28,9 +28,12 @@ bindsym $sup+Shift+l exec light-locker-command -l
 #bindsym $mod+Shift+Return exec ~/.config/i3/scripts/shell.sh
 bindsym $mod+Shift+Return exec cd "$(xcwd)" && exec $term
 
-exec --no-startup-id $HOME/.config/polybar/launch.sh --forest &
-exec --no-startup-id $HOME/.config/i3/scripts/startup.sh &
+exec_always ~/.config/i3/scripts/startup.sh &
+exec_always ~/.config/i3/scripts/display_change.sh & 
+
 #exec xrandr --dpi 140
+
+bindsym $mod+semicolon exec --no-startup-id rofimoji
 
 # Remove title bar
 for_window [class=".*"] border pixel 0
@@ -97,10 +100,10 @@ bindsym $mod+Shift+d exec dmenu_run
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+l focus up
+#bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
