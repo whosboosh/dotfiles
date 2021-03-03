@@ -1,5 +1,5 @@
 ---
 client_id: 2bdf991c68924a029159ed0593a6b3db
-client_secret: $(pass spotify.com/clientsecret)
+client_secret: $(pass spotify.com/clientsecret) 
 device_id: cc726cbdea776cf43e08a418eeeac3ce5658a74d
 port: 8888
