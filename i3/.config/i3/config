@@ -31,8 +31,7 @@ bindsym $mod+Shift+Return exec cd "$(xcwd)" && exec $term
 exec_always ~/.config/i3/scripts/startup.sh &
 exec_always ~/.config/i3/scripts/display_change.sh & 
 
-#exec xrandr --dpi 140
-
+bindsym $mod+l exec ~/.config/i3/scripts/word_lookup.sh
 bindsym $mod+semicolon exec --no-startup-id rofimoji
 
 # Remove title bar
