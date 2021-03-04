@@ -24,5 +24,28 @@ update_hooks() {
     done < <(echo "$1")
 }
 
-update_hooks "$PARENT_BAR_PID" 1
-playerctl --player=$PLAYER metadata --format "$FORMAT"
+PLAYER_STATUS="chrome"
+PLAYERCTL_STATUS=$(playerctl --player=$PLAYER_STATUS status 2>/dev/null)
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -eq 0 ]; then
+    STATUS=$PLAYERCTL_STATUS
+else
+    STATUS="No player is running"
+fi
+
+if [ "$1" == "--status" ]; then
+    echo "$STATUS"
+else
+    if [ "$STATUS" = "Stopped" ]; then
+        echo "No music is playing"
+    elif [ "$STATUS" = "Paused"  ]; then
+        update_hooks "$PARENT_BAR_PID" 2
+        playerctl --player=$PLAYER metadata --format "$FORMAT"
+    elif [ "$STATUS" = "No player is running"  ]; then
+        echo "$STATUS"
+    else
+        update_hooks "$PARENT_BAR_PID" 1
+        playerctl --player=$PLAYER metadata --format "$FORMAT"
+    fi
+fi
