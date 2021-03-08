@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # see man zscroll for documentation of the following parameters
-zscroll -l 30 \
-        --delay 0.15 \
+zscroll -l 20 \
+        --delay 0.25 \
         --scroll-padding "  " \
         --match-command "$HOME/.config/polybar/forest/scripts/get_spotify_status.sh --status" \
         --match-text "Playing" "--scroll 1" \

@@ -38,12 +38,23 @@ if [ "$1" == "--status" ]; then
     echo "Playing"
 else
 		LASTUPDATED=$(cat /home/nate/.config/polybar/forest/scripts/spotify/last_updated)
-		if [ "$(($(date +%s)-$LASTUPDATED))" -lt 5 ] 
+		if [ "$(($(date +%s)-$LASTUPDATED))" -lt 3 ] 
 		then
 			echo "$(cat /home/nate/.config/polybar/forest/scripts/spotify/current_song)"
 		else
 			SONG=$(playerctl --player=$PLAYER metadata --format "$FORMAT")
 			echo $(date +%s) > "/home/nate/.config/polybar/forest/scripts/spotify/last_updated"
+
+			CURRENTSONG=$(cat /home/nate/.config/polybar/forest/scripts/spotify/current_song)
+			if [ "$SONG" != "$CURRENTSONG" ]
+			then
+				echo "NEW SONG"
+				ARTURL=$(playerctl --player=spotifyd metadata --format "{{ mpris:artUrl }}")
+				curl -o /tmp/cover.jpg $ARTURL
+				notify-send "$SONG" -i /tmp/cover.jpg
+			fi		
+
+
 			echo $SONG > "/home/nate/.config/polybar/forest/scripts/spotify/current_song"
 			echo $SONG
 		fi				
