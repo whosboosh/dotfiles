@@ -24,28 +24,29 @@ update_hooks() {
     done < <(echo "$1")
 }
 
-PLAYER_STATUS="chrome"
-PLAYERCTL_STATUS=$(playerctl --player=$PLAYER_STATUS status 2>/dev/null)
-EXIT_CODE=$?
+#PLAYER_STATUS="chrome"
+#PLAYERCTL_STATUS=$(playerctl --player=$PLAYER_STATUS status 2>/dev/null)
+#EXIT_CODE=$?
 
-if [ $EXIT_CODE -eq 0 ]; then
-    STATUS=$PLAYERCTL_STATUS
-else
-    STATUS="No player is running"
-fi
+#if [ $EXIT_CODE -eq 0 ]; then
+#    STATUS=$PLAYERCTL_STATUS
+#else
+#    STATUS="No player is running"
+#fi
 
 if [ "$1" == "--status" ]; then
-    echo "$STATUS"
+    echo "Playing"
 else
-    if [ "$STATUS" = "Stopped" ]; then
-        echo "No music is playing"
-    elif [ "$STATUS" = "Paused"  ]; then
-        update_hooks "$PARENT_BAR_PID" 2
-        playerctl --player=$PLAYER metadata --format "$FORMAT"
-    elif [ "$STATUS" = "No player is running"  ]; then
-        echo "$STATUS"
-    else
-        update_hooks "$PARENT_BAR_PID" 1
-        playerctl --player=$PLAYER metadata --format "$FORMAT"
-    fi
+		LASTUPDATED=$(cat /home/nate/.config/polybar/forest/scripts/spotify/last_updated)
+		if [ "$(($(date +%s)-$LASTUPDATED))" -lt 5 ] 
+		then
+			echo "$(cat /home/nate/.config/polybar/forest/scripts/spotify/current_song)"
+		else
+			SONG=$(playerctl --player=$PLAYER metadata --format "$FORMAT")
+			echo $(date +%s) > "/home/nate/.config/polybar/forest/scripts/spotify/last_updated"
+			echo $SONG > "/home/nate/.config/polybar/forest/scripts/spotify/current_song"
+			echo $SONG
+		fi				
+		
+		update_hooks "$PARENT_BAR_PID" 2
 fi
