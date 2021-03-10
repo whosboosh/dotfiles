@@ -48,7 +48,6 @@ else
 			CURRENTSONG=$(cat /home/nate/.config/polybar/forest/scripts/spotify/current_song)
 			if [ "$SONG" != "$CURRENTSONG" ]
 			then
-				echo "NEW SONG"
 				ARTURL=$(playerctl --player=spotifyd metadata --format "{{ mpris:artUrl }}")
 				curl -o /tmp/cover.jpg $ARTURL
 				notify-send "$SONG" -i /tmp/cover.jpg
