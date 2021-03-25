@@ -20,5 +20,5 @@ IMGW=${IMGHW#*x}
 POSH=$((($SCRH/2)-($IMGH/2)))
 POSW=$((($SCRW/2)-($IMGW/2)))
 
-xwinwrap -g ${IMGHW}+${POSH}+${POSW} -ni -b -fs -ov -nf -- gifview -w WID --geometry 2256x1604+0+0 $1 -a --no-interactive --min-delay 20 -i
-#xwinwrap -g ${IMGHW}+${POSH}+${POSW} -ni -b -fs -ov -nf -- sxiv $1 -A 12 -b -Z -g 2256x1504+0+0 -e WID -s f
+#xwinwrap -g ${IMGHW}+${POSH}+${POSW} -ni -b -fs -ov -nf -- gifview -w WID --geometry 2256x1604+0+0 $1 -a --no-interactive --min-delay 15 -i
+xwinwrap -g ${IMGHW}+${POSH}+${POSW} -ni -b -fs -ov -nf -- sxiv $1 -A 12 -b -Z -g 2256x1504+0+0 -e WID -s f

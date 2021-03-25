@@ -105,6 +105,7 @@ git
 zsh-syntax-highlighting
 zsh-autosuggestions
 bgnotify
+nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -148,3 +149,5 @@ autoload -Uz compinit
 compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+alias py="python"

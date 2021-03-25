@@ -7,7 +7,8 @@ set $term kitty
 exec --no-startup-id i3-msg 'workspace $wsterm; exec kitty'
 exec --no-startup-id i3-msg workspace $wsterm 
 
-bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 870 25
+#bindsym $mod+y fullscreen disable; floating enable; resize set 422 240; sticky enable; move position 870 25
+bindsym $mod+y exec --no-startup-id i3-battery-popup -n -D -L 20 -l 10
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/audio.sh +5% # increase sound volume
@@ -46,7 +47,7 @@ for_window [class=".*"] border pixel 0
 
 # define gaps around windows
 gaps inner 3
-#gaps outer 3
+for_window [instance=trayer] sticky enable
 #for_window [class="^.*"] border pixel 2 
 
 # Application bindings
@@ -61,7 +62,7 @@ bindsym $mod+i exec $term ~/.config/i3/scripts/wifi.sh
 
 bindsym Ctrl+Print exec --no-startup-id flameshot gui
 #bindsym --release Shift+Print exec --no-startup-id DISPLAY=:0 ffcast -vv rec -m 4 ~/videos/$(date +'%s%N')-screencast.mkv
-bindsym --release Shift+Print exec --no-startup-id ffmpeg -f x11grab -video_size 2256x1504 -framerate 30 -i $DISPLAY -c:v libx264 -preset ultrafast -c:a aac ~/videos/$(date +'%s%N')-screen.mp4
+bindsym --release Shift+Print exec --no-startup-id ffmpeg -f x11grab -video_size 1920x1080 -framerate 30 -i $DISPLAY -c:v libx264 -preset ultrafast -c:a aac ~/videos/$(date +'%s%N')-screen.mp4
 # Kill screencast
 bindsym $mod+Shift+Print exec --no-startup-id pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
 
@@ -141,7 +142,7 @@ bindsym $mod+h split v
 bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+f exec --no-startup-id ~/.config/i3/scripts/fullscreen.sh 
 
 # start main stack
 bindsym $mod+F1   layout splitv;\
