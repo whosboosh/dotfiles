@@ -4,6 +4,8 @@ set $mod Mod4
 set $sup Mod1
 set $term kitty
 
+exec --no-startup-id ~/.config/i3/scripts/i3-battery-popup
+
 exec --no-startup-id i3-msg 'workspace $wsterm; exec kitty'
 exec --no-startup-id i3-msg workspace $wsterm 
 
@@ -57,9 +59,10 @@ bindsym $sup+w exec Popcorn-Time
 # wifi menu
 bindsym $mod+i exec $term ~/.config/i3/scripts/wifi.sh
 
+bindsym $sup+r exec ~/.config/i3/scripts/rdp.sh
+
 #Sharenix screencap
 #set $time date + %s%N 
-
 bindsym Ctrl+Print exec --no-startup-id flameshot gui
 #bindsym --release Shift+Print exec --no-startup-id DISPLAY=:0 ffcast -vv rec -m 4 ~/videos/$(date +'%s%N')-screencast.mkv
 bindsym --release Shift+Print exec --no-startup-id ffmpeg -f x11grab -video_size 1920x1080 -framerate 30 -i $DISPLAY -c:v libx264 -preset ultrafast -c:a aac ~/videos/$(date +'%s%N')-screen.mp4

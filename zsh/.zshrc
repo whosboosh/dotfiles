@@ -23,6 +23,7 @@ alias fgrep='fgrep --color=auto'
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$(yarn global bin):$PATH"  
 
 # Powerline
 powerline-daemon -q

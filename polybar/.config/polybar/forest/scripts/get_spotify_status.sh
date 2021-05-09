@@ -53,7 +53,6 @@ else
 				notify-send --urgency=low "$SONG" -i /tmp/cover.jpg
 			fi		
 
-
 			echo $SONG > "/home/nate/.config/polybar/forest/scripts/spotify/current_song"
 			echo $SONG
 		fi				
