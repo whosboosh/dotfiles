@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Aliases
-alias sshcon="ssh root@167.86.115.86"
+alias sshcon="ssh nate@167.86.115.86"
 # Changing "ls" to "exa"
 #alias ls='exa -al --color=always --group-directories-first' # my preferred listing
 #alias la='exa -a --color=always --group-directories-first'  # all files and dirs

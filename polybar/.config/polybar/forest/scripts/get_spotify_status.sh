@@ -50,7 +50,7 @@ else
 			then
 				ARTURL=$(playerctl --player=spotifyd metadata --format "{{ mpris:artUrl }}")
 				curl -o /tmp/cover.jpg $ARTURL
-				notify-send --urgency=low "$SONG" -i /tmp/cover.jpg
+				notify-send -t 500 "$SONG" -i /tmp/cover.jpg
 			fi		
 
 			echo $SONG > "/home/nate/.config/polybar/forest/scripts/spotify/current_song"
