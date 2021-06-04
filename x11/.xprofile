@@ -1,11 +1,10 @@
 #!/bin/sh
 
-i3 &
+xrandr --dpi 100 &
 xrandr --output DP1 --auto --output HDMI1 --auto --left-of DP1 &
-xrandr --output DP1 --mode 1920x1080 --rate 143
+xrandr --output DP1 --mode 1920x1080 --rate 143 &
 picom -b &
-redshift -P -O 3000 &
-~/.config/polybar/launch.sh &
+redshift -P -O 6000 &
 nitrogen --restore &
-xrandr --dpi 170 &
 light-locker &
+~/.config/polybar/launch.sh &
