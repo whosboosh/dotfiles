@@ -13,7 +13,7 @@ alias sshcon="ssh nate@167.86.115.86"
 #alias ll='exa -l --color=always --group-directories-first'  # long format
 #alias lt='exa -aT --color=always --group-directories-first' # tree listing
 #alias l.='exa -a | egrep "^\."'
-
+alias ssh="kitty +kitten ssh"
 
 #alias ls="colorls --sd"
 #alias la="colorls --sd -a"

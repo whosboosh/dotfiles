@@ -1,8 +1,8 @@
 #!/bin/sh
 
 i3 &
-xrandr --output eDP1 --auto --output HDMI1 --auto --left-of eDP1 &
-xinput --set-prop "MSHW0092:00 045E:0933 Touchpad" "libinput Natural Scrolling Enabled" 1 &
+xrandr --output DP1 --auto --output HDMI1 --auto --left-of DP1 &
+xrandr --output DP1 --mode 1920x1080 --rate 143
 picom -b &
 redshift -P -O 3000 &
 ~/.config/polybar/launch.sh &
