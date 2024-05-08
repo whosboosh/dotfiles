@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/nate/Documents/repos/qemu/qemu-9.0.0/configs/meson'
+let g:netrw_dirhist_2='/home/nate'
+let g:netrw_dirhist_1='/home/nate/.dotfiles/upmpdcli/.config/upmpdcli'
+let g:netrw_dirhist_0='/etc/default'
+let g:netrw_dirhist_9='/etc/sysconfig'
+let g:netrw_dirhist_8='/home/nate/.xpra'
+let g:netrw_dirhist_7='/usr/local/share/pkgconfig'
+let g:netrw_dirhist_6='/home/nate'
+let g:netrw_dirhist_5='/home/nate/.config/cava'
+let g:netrw_dirhist_4='/etc/sddm.conf.d'

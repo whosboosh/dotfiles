@@ -1,0 +1,22 @@
+/* colors */
+
+* {
+ al: #3b4252; // normal bg
+ bg: #2E3440; //active text
+ bga: #3b4252; // alt bg bannerthing
+ ac: #88C0D0; // icons
+ fg: #D8DEE9; // text colour
+ se: #8FBCBB; // active bg
+
+}
+
+/*
+* {
+  al:   #00000000;
+  bg:   #282828FF;
+  bga:  #313131FF;
+  fg:   #EBDBB2FF;
+  ac:   #FB4934FF;
+  se:   #8EC07CFF;
+}
+*/

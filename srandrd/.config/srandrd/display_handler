@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "${SRANDRD_OUTPUT} ${SRANDRD_EVENT}" in
+  "DP2-2 connected") xrandr --output DP2-2 --auto --left-of eDP1; ~/.config/i3/scripts/display_change.sh;;
+  "DP2-1 connected") xrandr --output DP2-1 --auto --right-of eDP1; ~/.config/i3/scripts/display_change.sh;;
+  "DP2-1 disconnected") xrandr --output DP2-1 --off --output eDP1 --auto; ~/.config/i3/scripts/display_change.sh;;
+  "DP2-2 disconnected") xrandr --output DP2-2 --off --output eDP1 --auto; ~/.config/i3/scripts/display_change.sh;;
+esac
+

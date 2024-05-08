@@ -1,0 +1,65 @@
+[user]
+    name = Nathanial Howard
+    email = nathanial55@gmail.com
+
+[init]
+    defaultBranch = master
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = green
+    local = yellow
+    remote = yellow reverse
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[core]
+    longpaths = true
+
+[push]
+    default = simple
+
+[pull]
+    rebase = true
+
+[remote]
+    pushDefault = origin
+
+[rebase]
+    autoStash = true
+
+[gui]
+    encoding = utf-8
+    gcwarning = false
+    diffcontext = 10
+
+[clean]
+    requireForce = true
+
+[merge]
+    tool = meld
+#    stat = true
+
+[advice]
+    statusHints = false
+    detachedHead = false
+
+[diff]
+    mnemonicprefix = true
+
+[gc]
+    auto = 0
+
+[rerere]
+    enabled = false
