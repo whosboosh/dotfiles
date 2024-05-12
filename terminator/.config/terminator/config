@@ -1,0 +1,22 @@
+[global_config]
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.7
+    background_type = transparent
+    cursor_fg_color = "#269a00"
+    cursor_bg_color = "#aaaaaa"
+    cursor_color_default = False
+    font = DejaVu Sans Mono 10
+    scrollback_infinite = True
+    use_system_font = False
+    use_theme_colors = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
