@@ -1,4 +1,5 @@
 [global_config]
+  dbus = False
 [keybindings]
 [profiles]
   [[default]]

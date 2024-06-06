@@ -5,14 +5,31 @@ set $mod Mod4
 set $sup Mod1
 set $term terminator
 
-exec_always ~/.config/i3/scripts/startup.sh
-exec_always ~/.config/polybar/forest/launch.sh
+exec dbus-update-activation-environment --all
+
+#exec_always ~/.config/sway/scripts/startup.sh
+
+bar {
+    swaybar_command waybar
+}
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+input "1133:16505:Logitech_G_Pro" {
+    left_handed false
+    tap enabled
+    natural_scroll disabled
+    dwt enabled
+    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 1 # set mouse sensitivity (between -1 and 1)
+}
+
+input "type:keyboard" {
+    xkb_layout gb
+    xkb_variant ,nodeadkeys
+    xkb_options grp:alt_shift_toggle
+}
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/audio.sh +5% # increase sound volume
@@ -49,7 +66,6 @@ bindsym $mod+Shift+e split h, exec cd "$(xcwd)" && exec $term
 # Remove title bar
 for_window [class=".*"] border pixel 0
 default_border pixel 0
-default_floating_border pixel 0
 
 # define gaps around windows
 gaps inner 2
@@ -85,8 +101,6 @@ floating_modifier $mod
 
 # appereance
 #hide_edge_borders both
-new_window 1pixel
-new_float pixel 5
 workspace_layout default
 
 # kill focused window
@@ -127,7 +141,7 @@ bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+Shift+bracketright move workspace to output right
 
 # enter fullscreen mode for the focused container
-bindsym Ctrl+Shift+x exec --no-startup-id ~/.config/i3/scripts/fullscreen.sh 
+bindsym Ctrl+Shift+x fullscreen
 #bindsym Ctrl+shift+f fullscreen toggle global
 
 # start main stack
@@ -140,7 +154,7 @@ bindsym $mod+F1   layout splitv;\
 # change container layout (stacked, tabbed, toggle )
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle 
+bindsym $mod+e layout toggle stacking tabbed splitX
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -154,19 +168,17 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-
-
 # name workspaces
-set $ws1    1:Term
-set $ws2     2:Web
-set $ws3     3:Dev
-set $ws4    4:Mail
-set $ws5    5:Chat
-set $ws6    6:Files
-set $ws7  7:Office
-set $ws8   8:Media
-set $ws9    9:Misc
-set $ws0   0:Robot
+set $ws1 1:Term
+set $ws2 2:Web
+set $ws3 3:Dev
+set $ws4 4:Mail
+set $ws5 5:Chat
+set $ws6 6:Files
+set $ws7 7:Office
+set $ws8 8:Media
+set $ws9 9:Misc
+set $ws0 0:Robot
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -194,15 +206,15 @@ bindsym $mod+Shift+0 move container to workspace $ws0
 
 # Alternative for double workspaces
 set $ws11    11:Term1
-set $ws12     12:Web1
-set $ws13     13:Dev1
+set $ws12    12:Web1
+set $ws13    13:Dev1
 set $ws14    14:Mail1
 set $ws15    15:Chat1
 set $ws16    16:Files1
-set $ws17  17:Office1
-set $ws18   18:Media1
+set $ws17    17:Office1
+set $ws18    18:Media1
 set $ws19    19:Misc1
-set $ws20   20:Robot1
+set $ws20    20:Robot1
 # switch to workspace
 bindsym $sup+1 workspace $ws11
 bindsym $sup+2 workspace $ws12
@@ -257,64 +269,7 @@ for_window [class="Arandr"] floating enable
 for_window [class="Kcalc"] floating enable
 for_window [class="conky"] floating enable
 
-bindsym $mod+Ctrl+Right resize shrink width 1px or 1 ppt
-bindsym $mod+Ctrl+Up resize grow height 1px or 1 ppt
-bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
-bindsym $mod+Ctrl+Left resize grow width 1px or 1 ppt
-
-# Plasma compatibility improvements
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-
-for_window [class="yakuake"] floating enable
-#for_window [class="systemsettings"] floating enable
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
-no_focus [class="plasmashell" window_type="notification"]
-
-for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
-# using plasma's logout screen instead of i3's
-bindsym $mod+Shift+Escape exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+i+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-
-# Volume control
-#bindsym $mod+plus+2 exec "pamixer --sink alsa_output.usb-Schiit_Audio_I_m_Fulla_Schiit-00.analog-stereo --increase 5"
-#bindsym $mod+minus+2 exec "pamixer --sink alsa_output.usb-Schiit_Audio_I_m_Fulla_Schiit-00.analog-stereo --decrease 5"
-#bindsym $mod+m+2 exec "pamixer --sink alsa_output.usb-Schiit_Audio_I_m_Fulla_Schiit-00.analog-stereo -t"
-
-bindsym $mod+plus exec "pamixer --sink alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_U0xdb00x3130__sink --increase 5"
-bindsym $mod+minus exec "pamixer --sink alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_U0xdb00x3130__sink --decrease 5"
-bindsym $mod+m exec "pamixer --sink alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_U0xdb00x3130__sink -t"
-
-# Move to workspace
-bindsym $mod+grave exec i3-input -F 'workspace %s' -P 'go to workspace: '
-bindsym $mod+Shift+grave exec i3-input -F 'move container to workspace %s' -P 'move to workspace: '
-
-# Scratchpad
-# Make the currently focused window a scratchpad
-#bindsym $sup+Shift+grave move scratchpad
-
-# Show the first scratchpad window
-#bindsym $sup+grave  scratchpad show
-
-for_window [title="System Tray"] floating enable
-for_window [title="System Tray" window_type="normal"] move scratchpad
-bindsym $mod+Shift+s [title="System Tray"] scratchpad show, resize set 64 64, move position center
-exec --no-startup-id "plasmawindowed org.kde.plasma.systemtray"
-
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and
-# hides everything)
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill; floating enable
-
+bindsym $mod+Ctrl+Right resize shrink width 5px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 5px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Left resize grow width 5px or 5 ppt
