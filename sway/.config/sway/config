@@ -7,7 +7,11 @@ set $term terminator
 
 exec dbus-update-activation-environment --all
 
-#exec_always ~/.config/sway/scripts/startup.sh
+
+output DP-1 resolution 3840x2160@60.000Hz pos 1920 0
+output HDMI-1 resolution 1920x1080@144.001Hz pos 0 0
+
+output * bg ~/wallpapers/VRChat_2024-03-24_05-03-16.132_3840x2160.png fill
 
 bar {
     swaybar_command waybar
